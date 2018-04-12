@@ -10,19 +10,21 @@
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "tsc": "tsc --noEmit -p ./tsconfig.json",
-    "format":
-      "find ./src/ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
+    "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
     "remotedev": "remotedev --hostname=localhost --port=8000",
     "lint": "tslint --project .",
     "lint:fix": "tslint --project . --fix",
     "prebuild": "rimraf dist",
-    "build":
-      "tsc -p ./tsconfig-build.json --module commonjs && rollup -c rollup.config.ts",
+    "build": "tsc -p ./tsconfig-build.json --module commonjs && rollup -c rollup.config.ts",
     "precommit": "lint-staged",
-    "prepush": "npm run lint && npm run tsc"
+    "prepush": "npm run lint && npm run tsc",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "lint-staged": {
-    "{src,__test__}/**/*.ts": ["npm run format", "git add"]
+    "{src,__test__}/**/*.ts": [
+      "npm run format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -33,9 +35,14 @@
   "bugs": {
     "url": "https://github.com/MyCryptoHQ/shepherd/issues"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "homepage": "https://github.com/MyCryptoHQ/ts-package-boilerplate#readme",
   "devDependencies": {
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
     "@types/jest": "^22.2.0",
     "@types/node": "^9.4.6",
     "husky": "^0.14.3",
@@ -51,7 +58,13 @@
     "typescript": "^2.7.2"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
@@ -60,6 +73,9 @@
       "@test/(.*)": "<rootDir>/__test__/$1"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "coveragePathIgnorePatterns": ["/node_modules/", "__test__"]
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "__test__"
+    ]
   }
 }
