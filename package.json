@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MyCryptoHQ/shepherd.git"
+    "url": "git+https://github.com/MyCryptoHQ/ts-package-boilerplate.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MyCryptoHQ/shepherd/issues"
+    "url": "https://github.com/MyCryptoHQ/ts-package-boilerplate/issues"
   },
   "files": ["dist"],
   "homepage": "https://github.com/MyCryptoHQ/ts-package-boilerplate#readme",
