@@ -7,8 +7,10 @@
   "typings": "src/index",
   "scripts": {
     "test": "jest",
+    "test:mem": "npm test -- --coverage --silent --logHeapUsage",
     "test:watch": "jest --watch",
-    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "test:prod": "npm run test -- --coverage --no-cache",
+    "test:prepublish": "npm run lint && npm run test -- --silent --no-cache",
     "tsc": "tsc --noEmit -p ./tsconfig.json",
     "format":
       "find ./src/ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
@@ -18,17 +20,20 @@
     "prebuild": "rimraf dist",
     "build":
       "tsc -p ./tsconfig-build.json --module commonjs && rollup -c rollup.config.ts",
+    "prepublishOnly":
+      "rimraf node_modules && npm i && npm run tsc && npm run test:prepublish && npm run build",
     "precommit": "lint-staged",
+    "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "prepush": "npm run lint && npm run tsc"
   },
   "lint-staged": {
-    "{src,__test__}/**/*.ts": ["npm run format", "git add"]
+    "{src,__test__}/**/*.ts": ["npm run format", "npm run lint:fix", "git add"]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MyCryptoHQ/ts-package-boilerplate.git"
   },
-  "author": "",
+  "author": "MyCrypto <henry@mycrypto.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MyCryptoHQ/ts-package-boilerplate/issues"
