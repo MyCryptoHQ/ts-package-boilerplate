@@ -23,5 +23,5 @@
     "noErrorTruncation": true,
     "pretty": true
   },
-  "include": ["./src/", "./__test__/"]
+  "include": ["./src/", "./__test__/", "examples"]
 }
