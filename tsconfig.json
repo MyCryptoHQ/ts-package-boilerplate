@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "noErrorTruncation": true,
-    "pretty": true
+    "esModuleInterop": true
   },
   "include": ["./src/", "./__test__/", "examples"]
 }
