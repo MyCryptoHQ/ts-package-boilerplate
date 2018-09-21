@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/ts-package-boilerplate.umd.js",
   "module": "dist/ts-package-boilerplate.es6.js",
-  "typings": "src/index",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:mem": "yarn test --coverage --silent --logHeapUsage",

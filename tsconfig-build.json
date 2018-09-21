@@ -12,7 +12,10 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true
+    "strict": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true
   },
   "include": ["./src/"],
   "inlineSources": true,
