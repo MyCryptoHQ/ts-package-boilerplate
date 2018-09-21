@@ -3,9 +3,6 @@
     "outDir": "./dist/lib",
     "target": "es6",
     "sourceMap": true,
-    "strictNullChecks": true,
-    "module": "es6",
-    "allowJs": false,
     "baseUrl": "./",
     "lib": ["es2017"],
     "allowSyntheticDefaultImports": true,
@@ -13,10 +10,9 @@
       "@src*": ["src*"]
     },
     "moduleResolution": "node",
-    "noEmitOnError": false,
-    "noImplicitAny": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "strict": true
   },
   "include": ["./src/"],
   "inlineSources": true,
