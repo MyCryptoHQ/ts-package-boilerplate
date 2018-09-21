@@ -1,20 +1,18 @@
 language: node_js
 
 cache:
+  yarn: true
   directories:
     - node_modules
-
-install:
-  - npm install --quiet
 
 jobs:
   include:
     - stage: test
-      script: npm run test:prod -- --maxWorkers=2 --silent && npm run report-coverage
+      script: yarn test:prod --maxWorkers=2 --silent && yarn report-coverage
     - stage: test
-      script: npm run tsc
+      script: yarn tsc
     - stage: test
-      script: npm run lint
+      script: yarn lint
 
 notifications:
   email:

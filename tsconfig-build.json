@@ -1,22 +1,11 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
     "outDir": "./dist/lib",
     "target": "es6",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "module": "es6",
-    "allowJs": false,
-    "baseUrl": "./",
-    "lib": ["es2017"],
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@src*": ["src*"]
-    },
-    "moduleResolution": "node",
-    "noEmitOnError": false,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true
   },
   "include": ["./src/"],
   "inlineSources": true,

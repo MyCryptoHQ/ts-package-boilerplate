@@ -4,48 +4,40 @@
   "description": "",
   "main": "dist/ts-package-boilerplate.umd.js",
   "module": "dist/ts-package-boilerplate.es6.js",
-  "typings": "src/index",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "test:mem": "npm test -- --coverage --silent --logHeapUsage",
+    "test:mem": "yarn test --coverage --silent --logHeapUsage",
     "test:watch": "jest --watch",
-    "test:prod": "npm run test -- --coverage --no-cache",
-    "test:prepublish": "npm run lint && npm run test -- --silent --no-cache",
+    "test:prod": "yarn test --coverage --no-cache",
+    "test:prepublish": "yarn lint && yarn test --silent --no-cache",
     "tsc": "tsc --noEmit -p ./tsconfig.json",
-    "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
+    "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config-precedence file-override",
     "remotedev": "remotedev --hostname=localhost --port=8000",
     "lint": "tslint --project .",
     "lint:fix": "tslint --project . --fix",
     "prebuild": "rimraf dist",
     "build": "tsc -p ./tsconfig-build.json --module commonjs && rollup -c rollup.config.ts",
-    "prepublishOnly": "rimraf node_modules && npm i && npm run tsc && npm run test:prepublish && npm run build",
+    "prepublishOnly": "rimraf node_modules && yarn && yarn tsc && yarn test:prepublish && yarn build",
     "precommit": "lint-staged",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
-    "prepush": "npm run lint && npm run tsc"
+    "prepush": "yarn lint && yarn tsc"
   },
   "lint-staged": {
     "{src,__test__}/**/*.ts": [
-      "npm run format",
-      "npm run lint:fix",
+      "yarn format",
+      "yarn lint:fix",
       "git add"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MyCryptoHQ/ts-package-boilerplate.git"
-  },
-  "author": "MyCrypto <henry@mycrypto.com>",
+  "repository": "MyCryptoHQ/ts-package-boilerplate",
+  "author": "MyCrypto",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MyCryptoHQ/ts-package-boilerplate/issues"
-  },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/MyCryptoHQ/ts-package-boilerplate#readme",
   "devDependencies": {
     "@types/jest": "^22.2.0",
-    "@types/node": "^9.4.6",
     "coveralls": "^3.0.1",
     "husky": "^0.14.3",
     "jest": "^22.4.2",
@@ -54,10 +46,10 @@
     "rollup": "^0.57.1",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.12.0",
-    "ts-jest": "^22.4.1",
+    "ts-jest": "^23.10.1",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.8.0",
-    "typescript": "^2.8.2"
+    "typescript": "^3.0.3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -68,16 +60,20 @@
       "tsx"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.tsx?$": "ts-jest"
     },
     "moduleNameMapper": {
       "@src/(.*)": "<rootDir>/src/$1",
       "@test/(.*)": "<rootDir>/__test__/$1"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "__test__"
-    ]
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "useTabs": false,
+    "semi": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
   }
 }
