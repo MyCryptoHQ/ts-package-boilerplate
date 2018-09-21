@@ -30,19 +30,12 @@
       "git add"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MyCryptoHQ/ts-package-boilerplate.git"
-  },
-  "author": "MyCrypto <henry@mycrypto.com>",
+  "repository": "MyCryptoHQ/ts-package-boilerplate",
+  "author": "MyCrypto",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MyCryptoHQ/ts-package-boilerplate/issues"
-  },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/MyCryptoHQ/ts-package-boilerplate#readme",
   "devDependencies": {
     "@types/jest": "^22.2.0",
     "coveralls": "^3.0.1",
@@ -67,17 +60,13 @@
       "tsx"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.tsx?$": "ts-jest"
     },
     "moduleNameMapper": {
       "@src/(.*)": "<rootDir>/src/$1",
       "@test/(.*)": "<rootDir>/__test__/$1"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "__test__"
-    ]
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
   "prettier": {
     "printWidth": 80,
