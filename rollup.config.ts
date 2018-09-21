@@ -1,7 +1,6 @@
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
-
-const pkg = require('./package.json');
+import pkg from './package.json';
 
 const libraryName = 'ts-package-boilerplate';
 
@@ -12,11 +11,6 @@ const libraryName = 'ts-package-boilerplate';
 
 const external = [...Object.keys(pkg.dependencies || {})];
 
-/**
- * Include all of the dependencies again here to squash rollup warnings
- */
-const globals = {};
-
 export default {
   input: `src/index.ts`,
 
@@ -25,10 +19,9 @@ export default {
       file: pkg.main,
       name: libraryName,
       format: 'umd',
-      globals,
       sourcemap: true,
     },
-    { file: pkg.module, format: 'es', globals, sourcemap: true },
+    { file: pkg.module, format: 'es', sourcemap: true },
   ],
 
   // exclude all node modules
@@ -40,7 +33,6 @@ export default {
   plugins: [
     // Compile TypeScript files
     typescript({
-      useTsconfigDeclarationDir: true,
       tsconfig: './tsconfig-build.json',
     }),
 
