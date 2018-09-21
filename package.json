@@ -12,7 +12,7 @@
     "test:prod": "npm run test -- --coverage --no-cache",
     "test:prepublish": "npm run lint && npm run test -- --silent --no-cache",
     "tsc": "tsc --noEmit -p ./tsconfig.json",
-    "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
+    "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config-precedence file-override",
     "remotedev": "remotedev --hostname=localhost --port=8000",
     "lint": "tslint --project .",
     "lint:fix": "tslint --project . --fix",
@@ -79,5 +79,13 @@
       "/node_modules/",
       "__test__"
     ]
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "useTabs": false,
+    "semi": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
   }
 }
