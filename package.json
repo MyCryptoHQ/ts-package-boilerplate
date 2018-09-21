@@ -7,10 +7,10 @@
   "typings": "src/index",
   "scripts": {
     "test": "jest",
-    "test:mem": "npm test -- --coverage --silent --logHeapUsage",
+    "test:mem": "yarn test --coverage --silent --logHeapUsage",
     "test:watch": "jest --watch",
-    "test:prod": "npm run test -- --coverage --no-cache",
-    "test:prepublish": "npm run lint && npm run test -- --silent --no-cache",
+    "test:prod": "yarn test --coverage --no-cache",
+    "test:prepublish": "yarn lint && yarn test --silent --no-cache",
     "tsc": "tsc --noEmit -p ./tsconfig.json",
     "format": "find ./src/ -name '*.ts*' | xargs prettier --write --config-precedence file-override",
     "remotedev": "remotedev --hostname=localhost --port=8000",
@@ -18,15 +18,15 @@
     "lint:fix": "tslint --project . --fix",
     "prebuild": "rimraf dist",
     "build": "tsc -p ./tsconfig-build.json --module commonjs && rollup -c rollup.config.ts",
-    "prepublishOnly": "rimraf node_modules && npm i && npm run tsc && npm run test:prepublish && npm run build",
+    "prepublishOnly": "rimraf node_modules && yarn && yarn tsc && yarn test:prepublish && yarn build",
     "precommit": "lint-staged",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
-    "prepush": "npm run lint && npm run tsc"
+    "prepush": "yarn lint && yarn tsc"
   },
   "lint-staged": {
     "{src,__test__}/**/*.ts": [
-      "npm run format",
-      "npm run lint:fix",
+      "yarn format",
+      "yarn lint:fix",
       "git add"
     ]
   },
